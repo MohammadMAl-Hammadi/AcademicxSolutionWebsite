@@ -80,8 +80,8 @@ export default function ContactSection() {
     setStatus('loading');
 
     try {
-      // Send email via FormSubmit or similar service
-      const response = await fetch('https://formspree.io/f/xyzabc', {
+      // Send email via Formspree
+      const response = await fetch('https://formspree.io/f/mbjwqnqq', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,6 +91,7 @@ export default function ContactSection() {
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
+          _subject: `رسالة جديدة من ${formData.name} - ${formData.subject}`,
         }),
       });
 
@@ -172,6 +173,7 @@ export default function ContactSection() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="الاسم الكامل"
+                required
                 className="px-4 py-3 bg-background/50 border border-white/10 rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
               />
               <input
@@ -180,6 +182,7 @@ export default function ContactSection() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="البريد الإلكتروني"
+                required
                 className="px-4 py-3 bg-background/50 border border-white/10 rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
               />
             </div>
@@ -189,6 +192,7 @@ export default function ContactSection() {
               value={formData.subject}
               onChange={handleChange}
               placeholder="الموضوع"
+              required
               className="w-full px-4 py-3 bg-background/50 border border-white/10 rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
             />
             <textarea
@@ -197,6 +201,7 @@ export default function ContactSection() {
               onChange={handleChange}
               placeholder="رسالتك"
               rows={5}
+              required
               className="w-full px-4 py-3 bg-background/50 border border-white/10 rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 resize-none"
             />
 
@@ -219,7 +224,7 @@ export default function ContactSection() {
                 className="flex items-center gap-2 p-3 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400"
               >
                 <CheckCircle size={18} />
-                <span className="text-sm">تم إرسال رسالتك بنجاح! سنرد عليك قريباً.</span>
+                <span className="text-sm">تم إرسال رسالتك بنجاح، سنتواصل معك قريباً.</span>
               </motion.div>
             )}
 
