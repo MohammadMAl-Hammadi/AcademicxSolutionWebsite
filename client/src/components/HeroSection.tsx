@@ -12,7 +12,7 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
   return (
     <section
       id="main-content"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-16 pb-8 md:pb-0"
       style={{
         backgroundImage: `url(${heroImage})`,
         backgroundSize: 'cover',
@@ -23,7 +23,7 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background/80" />
 
       {/* Content */}
-      <div className="container relative z-10 text-center">
+      <div className="container relative z-10 text-center px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,9 +35,9 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md"
+            className="inline-block px-3 py-2 md:px-4 md:py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md"
           >
-            <span className="text-sm font-medium text-cyan-400">
+            <span className="text-xs md:text-sm font-medium text-cyan-400">
               حلول أكاديمية وتقنية متكاملة
             </span>
           </motion.div>
@@ -47,7 +47,7 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
           >
             <span className="gradient-text">حلول أكاديمية وتقنية</span>
             <br />
@@ -59,7 +59,7 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed"
           >
             نحن نقدم حلولاً شاملة تغطي جميع احتياجاتك الأكاديمية والتقنية، من حل الواجبات
             والمشاريع إلى تصميم المواقع والاستضافة. فريق متخصص وخبرة عميقة لضمان نجاحك.
@@ -70,11 +70,14 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-col md:flex-row gap-4 justify-center items-center pt-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 w-full sm:w-auto px-4 sm:px-0"
           >
             <button
-              onClick={onRequestService}
-              className="px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-background font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 flex items-center gap-2 group"
+              onClick={(e) => {
+                e.preventDefault();
+                onRequestService();
+              }}
+              className="px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-background font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 flex items-center gap-2 group whitespace-nowrap"
             >
               اطلب الخدمة الآن
               <ArrowRight
@@ -83,9 +86,12 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
               />
             </button>
 
-            <button className="px-8 py-4 rounded-lg border border-white/20 text-foreground font-semibold hover:bg-white/5 hover:border-white/30 transition-all duration-300">
+            <a
+              href="#services"
+              className="px-8 py-4 rounded-lg border border-white/20 text-foreground font-semibold hover:bg-white/5 hover:border-white/30 transition-all duration-300 whitespace-nowrap"
+            >
               تعرف على خدماتنا
-            </button>
+            </a>
           </motion.div>
 
           {/* Stats */}
@@ -93,7 +99,7 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="grid grid-cols-3 gap-4 md:gap-8 pt-12 max-w-2xl mx-auto"
+            className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 pt-8 md:pt-12 max-w-2xl mx-auto"
           >
             {[
               { number: '500+', label: 'عميل راضٍ' },
@@ -105,12 +111,12 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7 + index * 0.1 }}
-                className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-xl p-4"
+                className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg md:rounded-xl shadow-xl p-2 md:p-4"
               >
-                <div className="text-2xl md:text-3xl font-bold gradient-text">
+                <div className="text-lg sm:text-2xl md:text-3xl font-bold gradient-text">
                   {stat.number}
                 </div>
-                <div className="text-sm text-foreground/60">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-foreground/60">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

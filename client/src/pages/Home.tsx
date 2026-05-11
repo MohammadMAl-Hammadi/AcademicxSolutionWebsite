@@ -27,7 +27,7 @@ export default function Home() {
       <SkipToContent />
       
       {/* Navigation */}
-      <Navigation />
+      <Navigation onRequestService={handleRequestService} />
 
       {/* Hero Section */}
       <HeroSection onRequestService={handleRequestService} />
