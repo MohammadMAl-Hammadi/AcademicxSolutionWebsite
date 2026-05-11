@@ -1,25 +1,63 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { useState } from 'react';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/HeroSection';
+import ServicesSection from '@/components/ServicesSection';
+import AboutSection from '@/components/AboutSection';
+import PortfolioSection from '@/components/PortfolioSection';
+import HowItWorksSection from '@/components/HowItWorksSection';
+import FAQSection from '@/components/FAQSection';
+import ContactSection from '@/components/ContactSection';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import ServiceRequestModal from '@/components/ServiceRequestModal';
+import Footer from '@/components/Footer';
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
- */
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
+
+  const handleRequestService = (serviceName?: string) => {
+    setSelectedService(serviceName || 'الخدمة');
+    setIsModalOpen(true);
+  };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Navigation */}
+      <Navigation />
+
+      {/* Hero Section */}
+      <HeroSection onRequestService={handleRequestService} />
+
+      {/* Services Section */}
+      <ServicesSection onRequestService={handleRequestService} />
+
+      {/* About Section */}
+      <AboutSection />
+
+      {/* Portfolio Section */}
+      <PortfolioSection />
+
+      {/* How It Works Section */}
+      <HowItWorksSection />
+
+      {/* FAQ Section */}
+      <FAQSection />
+
+      {/* Contact Section */}
+      <ContactSection />
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Floating WhatsApp Button */}
+      <FloatingWhatsApp />
+
+      {/* Service Request Modal */}
+      <ServiceRequestModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        serviceName={selectedService}
+      />
     </div>
   );
 }
