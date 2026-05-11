@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SkipToContent from '@/components/SkipToContent';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
@@ -22,6 +23,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Skip to Content Link */}
+      <SkipToContent />
+      
       {/* Navigation */}
       <Navigation />
 

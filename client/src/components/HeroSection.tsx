@@ -11,6 +11,7 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
 
   return (
     <section
+      id="main-content"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
       style={{
         backgroundImage: `url(${heroImage})`,
@@ -37,7 +38,7 @@ export default function HeroSection({ onRequestService }: HeroSectionProps) {
             className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md"
           >
             <span className="text-sm font-medium text-cyan-400">
-              🚀 حلول أكاديمية وتقنية متكاملة
+              حلول أكاديمية وتقنية متكاملة
             </span>
           </motion.div>
 

@@ -5,12 +5,17 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
-    { label: 'الرئيسية', href: '#' },
+    { label: 'الرئيسية', href: '/' },
     { label: 'الخدمات', href: '#services' },
     { label: 'من نحن', href: '#about' },
     { label: 'الأعمال', href: '#portfolio' },
     { label: 'الأسئلة الشائعة', href: '#faq' },
     { label: 'تواصل معنا', href: '#contact' },
+  ];
+
+  const legalLinks = [
+    { label: 'سياسة الخصوصية', href: '/privacy' },
+    { label: 'الشروط والأحكام', href: '/terms' },
   ];
 
   return (
@@ -97,15 +102,38 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 text-foreground/70">
                 <Mail size={16} className="text-cyan-400" />
-                <a href="mailto:info@academix.com" className="hover:text-cyan-400 transition-colors">
-                  info@academix.com
+                <a href="mailto:academicx.solution@gmail.com" className="hover:text-cyan-400 transition-colors">
+                  academicx.solution@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2 text-foreground/70">
                 <MapPin size={16} className="text-cyan-400" />
-                <span>اليمن - صنعاء</span>
+                <a href="https://t.me/AcademicxSolution" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">
+                  التليجرام
+                </a>
               </li>
             </ul>
+          </motion.div>
+        </div>
+
+        {/* Legal Links */}
+        <div className="border-t border-white/10 py-6 mb-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row justify-center gap-6 text-sm"
+          >
+            {legalLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                className="text-foreground/70 hover:text-cyan-400 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
           </motion.div>
         </div>
 
